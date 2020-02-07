@@ -10,28 +10,38 @@ project 1 - A Random Quote Generator
 /***
  * `quotes` array
  ***/
-let quotes = [
+const quotes = [
   {
     quote:
       "Sometimes I'll start a sentence and I don't even know where it's going. I just hope I find it along the way",
-    source: "Michael Scott"
+    source: "Michael Scott",
+    citation: "the office",
+    year: 2013
   },
   {
-    quote: "I am Beyonce always.",
-    source: "Michael Scott"
+    quote: "That's what she said.",
+    source: "Michael Scott",
+    citation: "the office",
+    year: 2013
   },
   {
     quote: "Oh, it is on, like a prawn who yawns at dawn.",
-    source: "Andy Bernard"
+    source: "Andy Bernard",
+    citation: "the office",
+    year: 2013
   },
   {
     quote: "I am running away from my responsibilities and it feels good.",
-    source: "Michael Scott"
+    source: "Michael Scott",
+    citation: "the office",
+    year: 2013
   },
   {
     quote:
       "I wish there was a way to know you're in the good old days before you've actually left them.",
-    source: "Andy Bernard"
+    source: "Andy Bernard",
+    citation: "the office",
+    year: 2013
   }
 ];
 
@@ -39,9 +49,42 @@ let quotes = [
  * `getRandomQuote` function
  ***/
 
+function getRandomQuote(e) {
+  let randomNum = Math.floor(Math.random() * Math.floor(5));
+  return e[randomNum];
+}
+
 /***
  * `printQuote` function
  ***/
+
+function printQuote() {
+  let quote = getRandomQuote(quotes);
+  let htmlString = `
+  <p class="quote">${quote.quote}</p>
+  <p class="source">${quote.source}
+  `;
+
+  if (quote.citation !== undefined) {
+    htmlString += `
+    <span class="citation">${quote.citation}</span>
+    `;
+  }
+
+  if (quote.year !== undefined) {
+    htmlString += `
+    <span class="year">${quote.year}</span>
+    `;
+  }
+
+  htmlString += `</p>`;
+
+  document.getElementById("quote-box").innerHTML = htmlString;
+
+  console.log(htmlString);
+
+  return htmlString;
+}
 
 /***
  * click event listener for the print quote button
