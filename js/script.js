@@ -1,12 +1,3 @@
-/******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
-******************************************/
-
-// For assistance:
-// Check the "Project Resources" section of the project instructions
-// Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
 /***
  * `quotes` array
  ***/
@@ -116,7 +107,7 @@ const colors = [
  ***/
 
 function getRandomQuote(e) {
-  let randomNum = Math.floor(Math.random() * Math.floor(11));
+  let randomNum = Math.floor(Math.random() * (quotes.length - 0 + 1)) + 1;
   return e[randomNum];
 }
 
@@ -124,10 +115,10 @@ function getRandomQuote(e) {
  * `changeBgColor` function
  ***/
 
-function changeBgColor(e) {
-  let randomNum = Math.floor(Math.random() * Math.floor(10));
-  return e[randomNum];
-}
+// function changeBgColor(e) {
+//   let randomNum = Math.floor(Math.random() * Math.floor(10));
+//   return e[randomNum];
+// }
 
 /***
  * `printQuote` function
@@ -161,9 +152,9 @@ function printQuote() {
   htmlString += `</p>`;
 
   // random bg color everytime quote prints
-  const body = document.getElementById("body");
-  let randomColors = changeBgColor(colors);
-  body.style.background = randomColors;
+  // const body = document.getElementById("body");
+  // let randomColors = changeBgColor(colors);
+  // body.style.background = randomColors;
   //
 
   document.getElementById("quote-box").innerHTML = htmlString;
@@ -172,15 +163,12 @@ function printQuote() {
 }
 
 /***
- * timing function
+ * new quote is displayed every 10 seconds
  ***/
 
-window.setInterval(printQuote, 3000);
+window.setInterval(printQuote, 10000);
 
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
- ***/
+// event listeners
 
 document
   .getElementById("load-quote")
